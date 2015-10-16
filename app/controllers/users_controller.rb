@@ -10,6 +10,6 @@ class UsersController < ApplicationController
     @tweets_json = @tweets.map do |tweet|
       tweet.created_at = tweet.created_at.strftime("%a %b %e, %g")
     end
-    render json: { user: @user, tweets: @tweets }
+    render json: { user: @user, tweets: @tweets_json }
   end
 end
