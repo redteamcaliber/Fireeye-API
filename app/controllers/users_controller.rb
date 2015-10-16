@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.where(id: params[:id]).first
     @tweets = @user.tweets.order(created_at: :desc)
-    @tweets.map! do |tweet|
+    @tweets_json = @tweets.map do |tweet|
       tweet.created_at = tweet.created_at.strftime("%a %b %e, %g")
     end
     render json: { user: @user, tweets: @tweets }
