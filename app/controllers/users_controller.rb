@@ -6,12 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(id: params[:id]).first
-    render json: @user
-  end
-
-  def tweets
-    @user = User.where(id: params[:user_id]).first
     @tweets = @user.tweets.order(created_at: :desc)
-    render json: @tweets
+    render json: { user: @user, tweets: @tweets }
   end
 end
