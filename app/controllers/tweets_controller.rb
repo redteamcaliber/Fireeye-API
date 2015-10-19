@@ -13,4 +13,9 @@ class TweetsController < ApplicationController
 
     end
   end
+
+  def show
+    @tweets = Tweet.where(user_id: params[:id])
+    render json: @tweets
+  end
 end
